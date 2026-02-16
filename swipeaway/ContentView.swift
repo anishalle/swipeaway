@@ -8,7 +8,7 @@
 import SwiftUI
 import AuthenticationServices
 
-var authManager = AuthManager()
+let authManager = AuthManager()
 
 struct ContentView: View {
     var body: some View {
@@ -28,7 +28,7 @@ struct ContentView: View {
             .frame(maxHeight: .infinity, alignment: .center)
             Spacer()
             Button(action: {authManager.runAuth()}) {
-                //TODO: fix this thing changing to black in light mode
+                //TODO: fix the text changing to black in light mode
                 Text("Sign in with Bungie")
                     .padding(.horizontal, 10)
                     .padding(.vertical, 5)

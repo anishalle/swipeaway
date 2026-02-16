@@ -10,9 +10,9 @@ import AuthenticationServices
 import Combine
 
 
-var strLen = 32
+let strLen = 32
 
-func generateStr(length: Int) -> String {
+func generateStr(_ length: Int) -> String {
     let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     return String((0..<length).map{ _ in letters.randomElement()! })
 }
@@ -32,10 +32,9 @@ class AuthManager: NSObject, ObservableObject, ASWebAuthenticationPresentationCo
     
   
     func runAuth() {
-        let state = generateStr(length: strLen)
+        let state = generateStr(strLen)
         guard let authURL = URL(string: "https://www.bungie.net/en/oauth/authorize?client_id=51471&response_type=code&state=\(state)") else { return }
         let scheme = "swipeaway-auth"
-        
         let session = ASWebAuthenticationSession(url: authURL, callbackURLScheme: scheme) {callbackUrl, error in
             guard let callbackUrl = callbackUrl, error == nil else {
                 print("Auth error: \(error?.localizedDescription ?? "Unknown error")")
